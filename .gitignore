@@ -1,0 +1,45 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Output from go build / go install
+bin/
+build/
+dist/
+
+# Go workspace
+go.work
+go.work.sum
+
+# Dependency packages
+vendor/
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Modules
+# go.sum biasanya disimpan, jadi tidak di-ignore!
+# go.mod & go.sum penting untuk dependency tracking
+
+# Coverage & profiling
+*.cover
+*.cov
+coverage.out
