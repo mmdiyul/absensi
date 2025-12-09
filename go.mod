@@ -2,6 +2,8 @@ module absensi
 
 go 1.24.3
 
+require gorm.io/gorm v1.31.1
+
 require (
 	github.com/bytedance/gopkg v0.1.3 // indirect
 	github.com/bytedance/sonic v1.14.2 // indirect
@@ -45,5 +47,4 @@ require (
 	golang.org/x/tools v0.40.0 // indirect
 	google.golang.org/protobuf v1.36.10 // indirect
 	gorm.io/driver/postgres v1.6.0 // indirect
-	gorm.io/gorm v1.31.1 // indirect
 )
