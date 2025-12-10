@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # --- Application Service ---
+  app:
+    # Build the application using the Dockerfile in the current directory
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Map a port on your host (e.g., 8080) to a port in the container (e.g., 8080)
+    # Adjust the port (e.g., 8080) if your application uses a different one
+    ports:
+      - "8080:8080"
+    # Mount the current directory (excluding those in .dockerignore) for live development
+    # Uncomment if you are developing and want live reload/changes without rebuilding
+    # volumes:
+    #   - .:/app
+    # Ensure the app starts after the database is ready
+    depends_on:
+      - database
+    # Pass environment variables to your Go application for database connection
+    environment:
+      # These values must match the 'database' service configuration
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: absensi
+    # You might need a restart policy if you want it to automatically restart
+    # restart: unless-stopped
+
+  # --- Database Service ---
+  database:
+    image: postgres:15-alpine
+    # Use a volume to persist data even if the container is stopped/removed
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    # Map the database port (optional, but useful for local inspection)
+    ports:
+      - "5432:5432"
+    environment:
+      # Set the PostgreSQL user, password, and database name
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: absensi
+    # restart: unless-stopped
+
+# --- Volumes ---
+volumes:
+  # Define the volume for persistent database storage
+  postgres_data:

@@ -1,0 +1,15 @@
+# Exclude Git files
+.git
+.gitignore
+
+# Exclude IDE/editor files
+.vscode
+.idea
+
+# Exclude the binary file from being copied back into the build context (if it exists)
+absensi
+
+# Exclude node_modules, logs, etc. if they exist
+node_modules
+logs
+tmp
